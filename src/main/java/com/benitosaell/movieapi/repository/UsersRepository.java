@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 import com.benitosaell.movieapi.model.User;
 @Repository
 public interface UsersRepository extends JpaRepository<User, String> {
-
-	
+	User findByEmail(String email);
 }

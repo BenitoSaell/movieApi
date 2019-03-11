@@ -23,9 +23,6 @@ public class UsersController {
 	@Autowired
 	private IUsersService serviceUsers;
 	
-	@Autowired
-	private IProfilesService serviceProfiles;
-	
 	@GetMapping("/users")
 	private List<User> searchAll(){
 		return null;
@@ -41,12 +38,29 @@ public class UsersController {
 		System.out.println("UserApi: "+user);
 		serviceUsers.save(user);
 		
-		Profile profile = new Profile();
-		profile.setEmail(user.getEmail());
-		profile.setProfile("User");
-		serviceProfiles.save(profile);
+		//Profile profile = new Profile();
+		//profile.setEmail(user.getEmail());
+		//profile.setProfile("User");
+		//serviceProfiles.save(profile);
 
 		
 		return user;
+	}
+	
+	@PostMapping("/login")
+	private User login(@RequestBody User user) {
+		System.out.println("UserApi: "+user);
+		User user2 = serviceUsers.searchUserByEmail(user.getEmail());
+		
+		if(user2.getPassword()==user.getPassword()) {
+			return user;
+		}
+		//Profile profile = new Profile();
+		//profile.setEmail(user.getEmail());
+		//profile.setProfile("User");
+		//serviceProfiles.save(profile);
+
+		
+		return null;
 	}
 }

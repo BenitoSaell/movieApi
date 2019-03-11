@@ -1,7 +1,7 @@
 package com.benitosaell.movieapi.service.jpa;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,12 @@ public class UsersService implements IUsersService {
 	@Override
 	public void save(User user) {
 		repoUsers.save(user);
+	}
+
+	@Override
+	public User searchUserByEmail(String email) {
+		User user = repoUsers.findByEmail(email);
+		return user;
 	}
 
 }

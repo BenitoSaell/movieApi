@@ -7,4 +7,5 @@ import com.benitosaell.movieapi.model.User;
 public interface IUsersService {
 	List<User> searchAll();
 	void save(User user);
+	User searchUserByEmail(String email);
 }
