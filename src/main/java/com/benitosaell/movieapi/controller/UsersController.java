@@ -3,6 +3,7 @@ package com.benitosaell.movieapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +49,7 @@ public class UsersController {
 	}
 	
 	@PostMapping("/login")
-	private User login(@RequestBody User user) {
+	private User login(@RequestBody User user, HttpSecurity http) {
 		System.out.println("UserApi: "+user);
 		User user2 = serviceUsers.searchUserByEmail(user.getEmail());
 		
@@ -59,7 +60,7 @@ public class UsersController {
 		//profile.setEmail(user.getEmail());
 		//profile.setProfile("User");
 		//serviceProfiles.save(profile);
-
+		
 		
 		return null;
 	}
