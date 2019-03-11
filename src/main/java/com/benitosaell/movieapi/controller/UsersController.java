@@ -48,7 +48,7 @@ public class UsersController {
 		return user;
 	}
 	
-	@PostMapping("/login")
+	/*@PostMapping("/login")
 	private User login(@RequestBody User user, HttpSecurity http) {
 		System.out.println("UserApi: "+user);
 		User user2 = serviceUsers.searchUserByEmail(user.getEmail());
@@ -63,5 +63,5 @@ public class UsersController {
 		
 		
 		return null;
-	}
+	}*/
 }

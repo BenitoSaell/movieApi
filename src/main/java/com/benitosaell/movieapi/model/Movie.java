@@ -23,10 +23,10 @@ public class Movie {
 	private String review;
 	private Date releaseDate;
 
-	/*
-	 * @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER) private List<Comment>
-	 * comments;
-	 */
+	
+	@OneToMany(mappedBy = "movie", fetch = FetchType.EAGER) private List<Comment>
+	 comments;
+	
 
 	public int getId() {
 		return id;

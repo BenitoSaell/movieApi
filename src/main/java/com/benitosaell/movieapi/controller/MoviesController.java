@@ -51,7 +51,9 @@ public class MoviesController {
 	
 	@DeleteMapping("/eliminar/{id}")
 	private String deleteMovie(@PathVariable("id") int id) {
+		System.out.println("EliminarID: "+id);
 		serviceMovies.delete(id);
+		
 		return "Registro eliminado";
 	}
 }

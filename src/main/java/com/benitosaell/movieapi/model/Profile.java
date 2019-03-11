@@ -12,7 +12,7 @@ public class Profile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String email;
+	private String username;
 	private String profile;
 
 	public int getId() {
@@ -23,12 +23,12 @@ public class Profile {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getProfile() {
@@ -41,7 +41,7 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", email=" + email + ", profile=" + profile + "]";
+		return "Profile [id=" + id + ", username=" + username + ", profile=" + profile + "]";
 	}
 
 }

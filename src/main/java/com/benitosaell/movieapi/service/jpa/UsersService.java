@@ -24,8 +24,8 @@ public class UsersService implements IUsersService {
 	}
 
 	@Override
-	public User searchUserByEmail(String email) {
-		User user = repoUsers.findByEmail(email);
+	public User searchUserByUsername(String username) {
+		User user = repoUsers.findByUsername(username);
 		return user;
 	}
 

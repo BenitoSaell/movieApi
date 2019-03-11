@@ -3,6 +3,7 @@ package com.benitosaell.movieapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,12 @@ public class CommentsController {
 	private Comment insertComment(@RequestBody Comment comment) {
 		serviceComments.save(comment);
 		return comment;
-		
+	}
+	
+	@DeleteMapping("/comentarios/{movie}")
+	private String deleteComments(@PathVariable("movie") int id) {
+		serviceComments.deleteByMovie(id);
+		return "Registros eliminados";
 	}
 
 }

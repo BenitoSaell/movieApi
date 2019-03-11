@@ -12,7 +12,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String email;
+	private String username;
 	private String name;
 	private String password;
 	private int status = 1;
@@ -25,12 +25,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getName() {
@@ -59,7 +59,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", name=" + name + ", password=" + password + ", status="
+		return "User [id=" + id + ", username=" + username + ", name=" + name + ", password=" + password + ", status="
 				+ status + "]";
 	}
 }
