@@ -25,32 +25,19 @@ public class UsersController {
 		return null;
 	}
 	
-	@GetMapping("/user/{email}")
-	private User searchUser(@PathVariable("email") String email){
-		return null;
-	}
-	
 	@PostMapping("/crear")
 	private User insertUser(@RequestBody User user) {
-		System.out.println("UserApi: "+user);
 		serviceUsers.save(user);
-		
-		//Profile profile = new Profile();
-		//profile.setEmail(user.getEmail());
-		//profile.setProfile("User");
-		//serviceProfiles.save(profile);
-
 		
 		return user;
 	}
 	
 	@PostMapping("/login")
-	private UserLogin login(@RequestBody UserLogin user) {
-		
+	private User login(@RequestBody UserLogin user) {
 		User user2 = serviceUsers.searchUserByUsername(user.getUsername());
-		System.out.println("UserApi: "+user+"  "+user2);
 		if(user2.getPassword().equals(user.getPassword())) {
-			return user;
+			user2.setPassword("");
+			return user2;
 		}else {
 			return null;
 		}
