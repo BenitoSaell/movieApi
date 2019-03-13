@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.benitosaell.movieapi.model.Profile;
 import com.benitosaell.movieapi.model.User;
+import com.benitosaell.movieapi.model.UserLogin;
 import com.benitosaell.movieapi.service.IProfilesService;
 import com.benitosaell.movieapi.service.IUsersService;
 
@@ -48,20 +49,20 @@ public class UsersController {
 		return user;
 	}
 	
-	/*@PostMapping("/login")
-	private User login(@RequestBody User user, HttpSecurity http) {
-		System.out.println("UserApi: "+user);
-		User user2 = serviceUsers.searchUserByEmail(user.getEmail());
+	@PostMapping("/login")
+	private UserLogin login(@RequestBody UserLogin user) {
 		
-		if(user2.getPassword()==user.getPassword()) {
+		User user2 = serviceUsers.searchUserByUsername(user.getUsername());
+		System.out.println("UserApi: "+user+"  "+user2);
+		if(user2.getPassword().equals(user.getPassword())) {
 			return user;
+		}else {
+			return null;
 		}
 		//Profile profile = new Profile();
 		//profile.setEmail(user.getEmail());
 		//profile.setProfile("User");
 		//serviceProfiles.save(profile);
 		
-		
-		return null;
-	}*/
+	}
 }
