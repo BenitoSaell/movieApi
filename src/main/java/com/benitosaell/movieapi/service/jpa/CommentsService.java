@@ -23,9 +23,4 @@ public class CommentsService implements ICommentsService {
 	public void save(Comment comment) {
 		repoComments.save(comment);
 	}
-
-	@Override
-	public void deleteByMovie(int movie) {
-		repoComments.deleteByMovie(movie);
-	}
 }

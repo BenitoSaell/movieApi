@@ -3,19 +3,14 @@ package com.benitosaell.movieapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.benitosaell.movieapi.model.Profile;
 import com.benitosaell.movieapi.model.User;
 import com.benitosaell.movieapi.model.UserLogin;
-import com.benitosaell.movieapi.service.IProfilesService;
 import com.benitosaell.movieapi.service.IUsersService;
 
 @RestController
@@ -59,10 +54,6 @@ public class UsersController {
 		}else {
 			return null;
 		}
-		//Profile profile = new Profile();
-		//profile.setEmail(user.getEmail());
-		//profile.setProfile("User");
-		//serviceProfiles.save(profile);
 		
 	}
 }

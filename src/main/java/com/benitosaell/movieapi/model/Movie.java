@@ -24,7 +24,7 @@ public class Movie {
 	private Date releaseDate;
 
 	
-	@OneToMany(mappedBy = "movie", fetch = FetchType.EAGER) private List<Comment>
+	@OneToMany(mappedBy = "movie", fetch = FetchType.EAGER,orphanRemoval=true) private List<Comment>
 	 comments;
 	
 

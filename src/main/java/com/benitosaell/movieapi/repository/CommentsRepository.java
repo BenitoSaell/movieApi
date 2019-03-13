@@ -9,5 +9,4 @@ import com.benitosaell.movieapi.model.Comment;
 @Repository
 public interface CommentsRepository extends JpaRepository<Comment, Integer> {
 	List<Comment> findByMovie_IdOrderByDate(int idMovie);
-	void deleteByMovie(int movie);
 }

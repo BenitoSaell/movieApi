@@ -7,5 +7,4 @@ import com.benitosaell.movieapi.model.Comment;
 public interface ICommentsService {
 	List<Comment> searchByMovie(int idMovie);
 	void save(Comment comment);
-	void deleteByMovie(int movie);
 }

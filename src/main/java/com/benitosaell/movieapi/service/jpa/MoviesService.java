@@ -26,7 +26,6 @@ public class MoviesService implements IMoviesService {
 
 	@Override
 	public List<Movie> searchAllOrder() {
-		// TODO Auto-generated method stub
 		return repoMovies.searchAllOrder();
 	}
 
