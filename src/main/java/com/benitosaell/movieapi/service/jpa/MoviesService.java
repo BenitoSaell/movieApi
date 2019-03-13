@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.benitosaell.movieapi.model.Movie;
-import com.benitosaell.movieapi.repository.CommentsRepository;
 import com.benitosaell.movieapi.repository.MoviesRepository;
 import com.benitosaell.movieapi.service.IMoviesService;
 
@@ -15,9 +14,6 @@ import com.benitosaell.movieapi.service.IMoviesService;
 public class MoviesService implements IMoviesService {
 	@Autowired
 	private MoviesRepository repoMovies;
-	
-	@Autowired
-	private CommentsRepository repoComments;
 	
 	@Override
 	public List<Movie> searchAll() {
