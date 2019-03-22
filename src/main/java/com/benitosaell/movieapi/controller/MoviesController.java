@@ -26,11 +26,6 @@ public class MoviesController {
 		return serviceMovies.searchAll();
 	}
 	
-	@GetMapping("/peliculas2")
-	private List<Movie> searchAllOrder(){
-		return serviceMovies.searchAllOrder();
-	}
-	
 	@GetMapping("/ver/{id}")
 	private Movie searchMovie(@PathVariable("id") int id){
 		return serviceMovies.searchMovie(id);
@@ -38,7 +33,6 @@ public class MoviesController {
 	
 	@PostMapping("/crear")
 	private Movie insertMovie(@RequestBody Movie movie) {
-		System.out.println("peli Api: "+movie);
 		serviceMovies.save(movie);
 		return movie;
 	}
@@ -51,9 +45,7 @@ public class MoviesController {
 	
 	@DeleteMapping("/eliminar/{id}")
 	private String deleteMovie(@PathVariable("id") int id) {
-		System.out.println("EliminarID: "+id);
 		serviceMovies.delete(id);
-		
 		return "Registro eliminado";
 	}
 }
