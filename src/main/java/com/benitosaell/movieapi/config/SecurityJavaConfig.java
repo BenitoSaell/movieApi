@@ -5,13 +5,16 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
@@ -30,21 +33,28 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {		
-		http.authorizeRequests()
+		http.cors().and().csrf().disable().authorizeRequests()
 		.antMatchers("/api/publico/peliculas","/api/publico/ver/**","/api/publico/comentarios/**")
 		.permitAll()
-		.antMatchers("/api/publico/crear", "/api/publico/ingresar")
+		.antMatchers("/api/publico/crear", "/login")
 		.permitAll()
-		.antMatchers("/api/peliculas/**","/api/comentarios/**", "/api/usuarios/**").authenticated()
+		.antMatchers("/api/peliculas/peliculas","/api/comentarios/**", "/api/usuarios/**").authenticated()
 		.and()
-		.csrf().disable();;
+        .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+        .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
-
-	//BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	// Crea el encriptador de contraseñas
 	@Bean
 	public static PasswordEncoder passwordEncoder() {
 	      return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
+	
+	@Bean
+	  CorsConfigurationSource corsConfigurationSource() {
+	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+	    return source;
+	  }
 }
