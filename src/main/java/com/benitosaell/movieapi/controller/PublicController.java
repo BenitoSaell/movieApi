@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.benitosaell.movieapi.model.Comment;
 import com.benitosaell.movieapi.model.Movie;
+import com.benitosaell.movieapi.model.Profile;
 import com.benitosaell.movieapi.model.User;
 import com.benitosaell.movieapi.model.UserLogin;
 import com.benitosaell.movieapi.service.ICommentsService;
 import com.benitosaell.movieapi.service.IMoviesService;
+import com.benitosaell.movieapi.service.IProfilesService;
 import com.benitosaell.movieapi.service.IUsersService;
 
 @RestController
@@ -38,6 +40,9 @@ public class PublicController {
 
 	@Autowired
 	private IUsersService serviceUsers;
+	
+	@Autowired
+	private IProfilesService serviceProfiles;
 
 	//BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -61,15 +66,18 @@ public class PublicController {
 		//String temp = bCryptPasswordEncoder.encode(user.getPassword());
 		//user.setPassword(temp);
 		serviceUsers.save(user);
+		Profile profile = new Profile();
+		profile.setRol("USER");
+		profile.setUsername(user.getUsername());
+		serviceProfiles.save(profile);
 		return user;
 	}	
 	
 	@PostMapping("/ingresar")
 	private String ingresar(@RequestBody UserLogin user) {
-		//System.out.println("ffffffff");
-		UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(user.getUsername(),
-				  bCryptPasswordEncoder.encode(user.getPassword()));
-		//System.out.println("Data" + user+ "  : "+authReq);
+		serviceUsers.login(user);
+		
+		
 		return "resultado";
 
 	}

@@ -13,7 +13,7 @@ public class Profile {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String username;
-	private String profile;
+	private String rol;
 
 	public int getId() {
 		return id;
@@ -31,17 +31,17 @@ public class Profile {
 		this.username = username;
 	}
 
-	public String getProfile() {
-		return profile;
+	public String getRol() {
+		return rol;
 	}
 
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", username=" + username + ", profile=" + profile + "]";
+		return "Profile [id=" + id + ", username=" + username + ", rol=" + rol + "]";
 	}
 
 }
