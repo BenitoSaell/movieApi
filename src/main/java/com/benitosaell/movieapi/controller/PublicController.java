@@ -2,13 +2,8 @@ package com.benitosaell.movieapi.controller;
 
 import java.util.List;
 
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +24,6 @@ import com.benitosaell.movieapi.service.IUsersService;
 @RestController
 @RequestMapping("/api/publico")
 public class PublicController {
-
-	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	private IMoviesService serviceMovies;
@@ -43,8 +36,6 @@ public class PublicController {
 	
 	@Autowired
 	private IProfilesService serviceProfiles;
-
-	//BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@GetMapping("/peliculas")
 	private List<Movie> searchAllOrder() {
@@ -63,21 +54,21 @@ public class PublicController {
 
 	@PostMapping("/crear")
 	private User insertUser(@RequestBody User user) {
-		//String temp = bCryptPasswordEncoder.encode(user.getPassword());
-		//user.setPassword(temp);
+		BCryptPasswordEncoder bCryptPasswordEncoder= new BCryptPasswordEncoder();
+		String temp = bCryptPasswordEncoder.encode(user.getPassword());
+		user.setPassword(temp);
 		serviceUsers.save(user);
 		Profile profile = new Profile();
 		profile.setRol("USER");
 		profile.setUsername(user.getUsername());
 		serviceProfiles.save(profile);
 		return user;
+		
 	}	
 	
 	@PostMapping("/ingresar")
 	private String ingresar(@RequestBody UserLogin user) {
 		serviceUsers.login(user);
-		
-		
 		return "resultado";
 
 	}
