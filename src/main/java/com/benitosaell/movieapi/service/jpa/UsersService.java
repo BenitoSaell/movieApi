@@ -27,5 +27,4 @@ public class UsersService implements IUsersService {
 		User user = repoUsers.findByUsername(username);
 		return user;
 	}
-
 }

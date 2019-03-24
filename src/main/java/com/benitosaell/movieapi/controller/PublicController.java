@@ -64,12 +64,5 @@ public class PublicController {
 		serviceProfiles.save(profile);
 		return user;
 		
-	}	
-	
-	@PostMapping("/ingresar")
-	private String ingresar(@RequestBody UserLogin user) {
-		serviceUsers.login(user);
-		return "resultado";
-
 	}
 }
