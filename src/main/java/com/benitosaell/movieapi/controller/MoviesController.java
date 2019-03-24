@@ -37,15 +37,8 @@ public class MoviesController {
 		return movie;
 	}
 	
-	@PutMapping("/actualizar")
-	private Movie updateMovie(@RequestBody Movie movie) {
-		serviceMovies.save(movie);
-		return movie;
-	}
-	
 	@DeleteMapping("/eliminar/{id}")
-	private String deleteMovie(@PathVariable("id") int id) {
+	private void deleteMovie(@PathVariable("id") int id) {
 		serviceMovies.delete(id);
-		return "Registro eliminado";
 	}
 }

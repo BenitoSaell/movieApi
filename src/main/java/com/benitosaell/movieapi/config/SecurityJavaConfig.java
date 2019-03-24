@@ -38,7 +38,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.antMatchers("/api/publico/crear", "/login")
 		.permitAll()
-		.antMatchers("/api/peliculas/peliculas","/api/comentarios/**", "/api/usuarios/**").authenticated()
+		.antMatchers("/api/peliculas/peliculas","/api/peliculas/crear","/api/peliculas/ver/**","/api/peliculas/eliminar/**","/api/comentarios/**", "/api/usuarios/**").authenticated()
 		.and()
         .addFilter(new JWTAuthenticationFilter(authenticationManager()))
         .addFilter(new JWTAuthorizationFilter(authenticationManager()))
