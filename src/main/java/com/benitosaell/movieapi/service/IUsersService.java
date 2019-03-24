@@ -12,6 +12,6 @@ public interface IUsersService {
 	@Async("asyncExecutor")
 	void save(User user);
 	User searchUserByUsername(String username);
-	@Async("asyncExecutor")
+	
 	String login(UserLogin user);
 }
