@@ -55,7 +55,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject(auth.getName())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
-        //res.getWriter().write(auth.getName().toString());;
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
 }
