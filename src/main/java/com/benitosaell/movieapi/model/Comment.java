@@ -2,6 +2,7 @@ package com.benitosaell.movieapi.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Comment {
 	private String review;
 	private String email;
 	private Date date;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "movie")
 	private Movie movie;
 

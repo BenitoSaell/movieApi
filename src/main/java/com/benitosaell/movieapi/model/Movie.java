@@ -3,6 +3,7 @@ package com.benitosaell.movieapi.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,11 +24,9 @@ public class Movie {
 	private String review;
 	private Date releaseDate;
 
+	@OneToMany(mappedBy = "movie", fetch = FetchType.EAGER,cascade = CascadeType.ALL) 
+	private List<Comment> comments;
 	
-	@OneToMany(mappedBy = "movie", fetch = FetchType.EAGER,orphanRemoval=true) private List<Comment>
-	 comments;
-	
-
 	public int getId() {
 		return id;
 	}
@@ -68,11 +67,11 @@ public class Movie {
 		return releaseDate;
 	}
 
-	/*
-	 * public List<Comment> getComments() { return comments; }
-	 * 
-	 * public void setComments(List<Comment> comments) { this.comments = comments; }
-	 */
+	
+	//public List<Comment> getComments() { return comments; }
+	  
+	//public void setComments(List<Comment> comments) { this.comments = comments; }
+	 
 
 	public void setSypnosis(String sypnosis) {
 		this.synopsis = sypnosis;
