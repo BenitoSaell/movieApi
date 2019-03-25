@@ -1,7 +1,5 @@
 package com.benitosaell.movieapi.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;

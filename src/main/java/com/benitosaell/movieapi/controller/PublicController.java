@@ -15,7 +15,6 @@ import com.benitosaell.movieapi.model.Comment;
 import com.benitosaell.movieapi.model.Movie;
 import com.benitosaell.movieapi.model.Profile;
 import com.benitosaell.movieapi.model.User;
-import com.benitosaell.movieapi.model.UserLogin;
 import com.benitosaell.movieapi.service.ICommentsService;
 import com.benitosaell.movieapi.service.IMoviesService;
 import com.benitosaell.movieapi.service.IProfilesService;

@@ -3,11 +3,9 @@ package com.benitosaell.movieapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,8 +35,8 @@ public class MoviesController {
 		return movie;
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
+	@GetMapping(path="/eliminar/{id}")
 	private void deleteMovie(@PathVariable("id") int id) {
-		serviceMovies.delete(id);
+		serviceMovies.delete(id);		
 	}
 }
