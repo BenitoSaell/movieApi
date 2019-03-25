@@ -12,12 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.benitosaell.movieapi.model.User;
 import com.benitosaell.movieapi.service.IUsersService;
 
+/*
+ * 
+*/
 @RestController
 @RequestMapping("/api/admin")
 public class LoginController {
 	@Autowired
 	private IUsersService serviceUsers;
 	
+	/*
+	 * Obtener la información del usuario activo
+	*/
 	@GetMapping("/user")
 	private User logout(Authentication auth) {
 		try {
@@ -31,12 +37,14 @@ public class LoginController {
 		}
 	}
 	
+	/*
+	 * Eliminar la autentificación.
+	*/
 	@GetMapping("/salir")
 	private boolean logout(HttpServletRequest request) {
 		try {
 			SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 			logoutHandler.logout(request, null, null);
-
 			return true;
 		} catch (Exception ex) {
 			System.out.println("ErrorSalir: "+ ex);

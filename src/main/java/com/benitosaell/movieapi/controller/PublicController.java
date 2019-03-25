@@ -19,7 +19,10 @@ import com.benitosaell.movieapi.service.ICommentsService;
 import com.benitosaell.movieapi.service.IMoviesService;
 import com.benitosaell.movieapi.service.IProfilesService;
 import com.benitosaell.movieapi.service.IUsersService;
-
+/*
+ * Controlador público para para operaciones que no requieran autentificacion 
+ * 
+*/
 @RestController
 @RequestMapping("/api/publico")
 public class PublicController {
@@ -35,22 +38,34 @@ public class PublicController {
 	
 	@Autowired
 	private IProfilesService serviceProfiles;
-
+	
+	/*
+	 * Obtener la lista de peliculas ordenadas
+	*/
 	@GetMapping("/peliculas")
 	private List<Movie> searchAllOrder() {
 		return serviceMovies.searchAllOrder();
 	}
-
+	
+	/*
+	 * Obtener la información de pelicula seleccionada
+	*/
 	@GetMapping("/ver/{id}")
 	private Movie searchMovie(@PathVariable("id") int id) {
 		return serviceMovies.searchMovie(id);
 	}
 
+	/*
+	 * Obtener la lista de comentarios de una pelicula
+	*/
 	@GetMapping("/comentarios/{idMovie}")
 	private List<Comment> searchComments(@PathVariable("idMovie") int idMovie) {
 		return serviceComments.searchByMovie(idMovie);
 	}
 
+	/*
+	 * Registrar un nuevo usuario
+	*/
 	@PostMapping("/crear")
 	private User insertUser(@RequestBody User user) {
 		BCryptPasswordEncoder bCryptPasswordEncoder= new BCryptPasswordEncoder();
